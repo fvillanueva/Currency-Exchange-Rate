@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Exchange rate</title>
+</head>
+
+<body>
+
+<h2>Last Update: <span th:text="${currencies.lastUpdate}"/> </h2>
+
+<form th:action="@{/}"  method="POST">
+  From:
+  <select th:value="${from}" name="from" id="from">
+    <option value="dolar">US Dolar</option>
+    <option value="pesoArgentino">Argentine Peso</option>
+    <option value="euro">Euro</option>
+  </select>
+
+  To:
+
+  <select th:value="${to}" name="to" id="to">
+    <option value="pesoArgentino">Argentine Peso</option>
+    <option value="dolarOficialSell">Dolar Oficial Venta</option>
+    <option value="dolarOficialBuy">Dolar Oficial Compra</option>
+    <option value="dolarBlueSell">Dolar Blue Venta</option>
+    <option value="dolarBlueBuy">Dolar Blue Compra</option>
+    <option value="euroOficialSell">Euro Oficial Venta</option>
+    <option value="euroOficialBuy">Euro Oficial Compra</option>
+    <option value="euroBlueSell">Euro Blue Venta</option>
+    <option value="euroBlueBuy">Euro Blue Compra</option>
+  </select>
+
+  Amount:
+
+  <input type="text" id="amount" name="amount" th:value="${amount}">
+  <br><br>
+
+  <input type="submit" value="Convertir" class="btn btn-outline-primary mt-2" /><br>
+  <p>The Result is: $<span th:text="${result}"></span></p>
+</form>
+<hr>
+
+
+<h2>Exchange rates</h2>
+
+Dolar Oficial:
+<ul>
+  <li>Avg Value: $<span th:text="${currencies.dolarOficial.avgValue}"/></li>
+  <li>Sell Value: $<span th:text="${currencies.dolarOficial.sellValue}"/></li>
+  <li>Buy Value: $<span th:text="${currencies.dolarOficial.buyValue}"/></li>
+</ul>
+Dolar Blue:
+<ul>
+  <li>Avg Value: $<span th:text="${currencies.dolarBlue.avgValue}"/></li>
+  <li>Sell Value: $<span th:text="${currencies.dolarBlue.sellValue}"/></li>
+  <li>Buy Value: $<span th:text="${currencies.dolarBlue.buyValue}"/></li>
+</ul>
+Euro Oficial:
+<ul>
+  <li>Avg Value: $<span th:text="${currencies.euroOficial.avgValue}"/></li>
+  <li>Sell Value: $<span th:text="${currencies.euroOficial.sellValue}"/></li>
+  <li>Buy Value: $<span th:text="${currencies.euroOficial.buyValue}"/></li>
+</ul>
+Euro Blue:
+<ul>
+  <li>Avg Value: $<span th:text="${currencies.euroBlue.avgValue}"/></li>
+  <li>Sell Value: $<span th:text="${currencies.euroBlue.sellValue}"/></li>
+  <li>Buy Value: $<span th:text="${currencies.euroBlue.buyValue}"/></li>
+</ul>
+
+<hr>
+
+
+
+
+
+
+</body>
+
+</html>
